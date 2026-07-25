@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
+
+minecraft {
+    mappings channel: 'official', version: project.minecraft_version
+
+    runs {
+        configureEach {
+            workingDir = layout.projectDirectory.dir('run')
+            mods {
+                autoreplant {
+                    source sourceSets.main
+                }
+            }
+        }
+        register('client')
+        register('server') { args '--nogui' }
+    }
+}
+
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+}
+
+dependencies {
+    implementation minecraft.dependency("net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}")
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset = "UTF-8"
+    filesMatching("META-INF/mods.toml") {
+        expand "version": project.version
+    }
+}
+
+// FG7 dev mod scanning needs mods.toml coexisting with classes in same directory.
+sourceSets.main.output.resourcesDir = layout.buildDirectory.dir("classes/java/main").get().asFile
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = "UTF-8"
+}
+
+jar {
+    manifest {
+        attributes([
+            "Implementation-Title"  : project.archives_base_name,
+            "Implementation-Version": project.version,
+        ])
+    }
+}

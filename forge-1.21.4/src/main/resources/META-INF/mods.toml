@@ -1,0 +1,37 @@
+modLoader="javafml"
+loaderVersion="[54,)"
+license="MIT"
+
+[[mods]]
+modId="autoreplant"
+version="${version}"
+displayName="Auto Replant Tree"
+logoFile="assets/autoreplant/icon.png"
+description='''Automatically replants saplings when you break a log block. Works on the server — no client mod needed.
+
+Features:
+■ All vanilla tree types: Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Mangrove, Cherry
+■ Nether trees: Crimson and Warped stems → fungi replanting on their respective nylium
+■ 2x2 tree support: Dark Oak and Jungle trees replanted as a 2x2 grid (requires 4 saplings)
+■ Sneak to cancel: Hold sneak/crouch while breaking to skip auto-replant
+■ Stripped/wood variants: Recognizes stripped logs and wood blocks
+■ Full inventory search: Finds saplings anywhere in your inventory, including offhand
+■ No-sapling mode: requireSapling: false to plant without consuming saplings
+■ Config file: Per-tree toggle via config/autoreplant.json
+
+All sapling finding and replanting is based on the broken log type. Configurable per-tree from the config file.'''
+authors="Cukkoo"
+
+[[dependencies.autoreplant]]
+modId="forge"
+mandatory=true
+versionRange="[54,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.autoreplant]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.21.4]"
+ordering="NONE"
+side="BOTH"

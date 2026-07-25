@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "autoreplant",
+  "version": "${version}",
+  "name": "Auto Replant Tree",
+  "description": "Automatically replants saplings when you break a log block. Works on the server — no client mod needed. Features: All vanilla tree types (Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Mangrove, Cherry, Pale Oak), Nether trees (Crimson & Warped fungi on nylium), 2x2 replanting for Dark Oak & Jungle, sneak to cancel, no-sapling mode (requireSapling: false), full inventory search including offhand, per-tree config via config/autoreplant.json.",
+  "authors": [
+    "Cukkoo"
+  ],
+  "contact": {
+    "sources": "https://github.com/Cukkoo12/auto-replant-tree"
+  },
+  "license": "MIT",
+  "icon": "assets/autoreplant/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.autoreplant.AutoReplantMod"
+    ]
+  },
+  "mixins": [
+    "autoreplant.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "fabric-api": "*",
+    "minecraft": "26.2",
+    "java": ">=25"
+  }
+}
